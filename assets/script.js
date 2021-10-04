@@ -11,5 +11,7 @@
 /* ------------------------ MAURO ----------------------- */
 
 /* ----------------------- VAGNER ----------------------- */
-
+function captureData(elementColumn, elementLine, player) {
+  gamePosition[elementColumn][elementLine] = player;
+}
 /* ----------------------- VAGNER ----------------------- */

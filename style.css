@@ -1,6 +1,25 @@
 /*CSS BÁSICO*/
 
-#instrutions p {
+
+.instrutions {
+    display:flex;
+    flex-direction:column;
+}
+
+.hidden {
+    display:none;
+}
+
+
+.game-hidden {
+    display: none;
+}
+
+.show-game {
+    display:flex;
+}
+
+.instrutions p {
     display:flex;
     align-items: center;
     justify-content: center;
@@ -21,13 +40,7 @@ ol li {
     align-content: center;
 }
 
-.hidden {
-    display:none;
-}
 
-.show {
-    display:flex;
-}
 
 ol {
     display: flex;
@@ -41,12 +54,4 @@ ol li {
     font-size: 14px;
 }
 
-
-.game-hidden {
-    display: none;
-}
-
-.show-game {
-    display:flex;
-}
 

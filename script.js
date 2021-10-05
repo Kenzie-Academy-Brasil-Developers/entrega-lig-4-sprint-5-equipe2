@@ -1,15 +1,17 @@
 //SCRIPT BÁSICO DO BOTÃO
 
 
-let instrutions = document.getElementById('instrutions');
-let game = document.getElementById('game')
-let botaoStart = document.querySelector('play');
+const instrutions = document.querySelector('.instrutions');
+const game = document.querySelector('.game-hidden')
+const botaoStart = document.getElementById('play');
 
-botaoStart.addEventListener('click', function hiddenInstrutions() {
+botaoStart.addEventListener('click', hiddenInstrutions)
+ 
+function hiddenInstrutions() {
     instrutions.classList.remove('instrutions')
     instrutions.classList.add('hidden');
     game.classList.remove('game-hidden')
     game.classList.add('show-game')
-});
+};
 
 

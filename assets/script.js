@@ -1,12 +1,15 @@
 /* ----------------------- CAUANA ----------------------- */
 const instrutions = document.querySelector(".instrutions");
 const game = document.querySelector(".game-hidden");
+const divplayer = document.querySelector('.quemvaijogar')
 const botaoStart = document.getElementById("play");
 let jogador = 1;
 
 function hiddenInstrutions() {
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
+  divplayer.classList.remove('quemvaijogar');
+  divplayer.classList.add('player-now');
   createGamePosition(0);
   createBoard();
   selecionarColuna(); //Adicionar ao click para chamar a função

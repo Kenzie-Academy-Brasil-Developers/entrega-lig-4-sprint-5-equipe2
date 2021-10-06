@@ -1,7 +1,8 @@
 /* ----------------------- CAUANA ----------------------- */
-
-const instrutions = document.querySelector(".instrutions");
-const botaoStart = document.getElementById("play");
+const instrutions = document.querySelector('.instrutions');
+const game = document.querySelector('.game-hidden')
+const botaoStart = document.getElementById('play');
+let quemjoga = 'player1'
 
 function hiddenInstrutions() {
   instrutions.classList.remove("instrutions");
@@ -9,6 +10,50 @@ function hiddenInstrutions() {
   createGamePosition(0);
   createBoard();
 }
+
+// Adicionando função para percorrer colunas
+function selecionarColuna() {
+const selectcoluna = document.querySelectorAll('.column')
+
+selectcoluna.forEach(column => {
+  column.addEventListener("click", jogar)
+})
+}
+
+// Função jogar adicionando troca de players e criando as fichas
+function jogar(event) {
+  const play = document.querySelectorAll('.column')
+
+  for (let i = 0; i < play.length; i++) {
+    if (quemjoga === 'player1') {
+      let ficha = document.createElement('div')
+        ficha.classList.add('player1')
+            play[i].appendChild(ficha)
+
+            gamePosition.push() //Nao é assim, não sei percorrer a array
+            quemjoga = 'player2'
+
+          } else if (quemjoga === 'player2'){
+
+            let ficha = document.createElement('div')
+            ficha.classList.add('player2')
+            play[i].appendChild(ficha)
+
+            gamePosition.push() //Nao é assim, não sei percorrer a array
+            quemjoga = 'player1'
+          }
+  }
+}
+
+// // Função para mudar o jogador a cada clique (tentar inserir dentro da função jogar()??????)
+// function mudarJogador() {
+//   if( quemjoga === 'player1') {
+//     quemjoga = 'player2'
+//   } else if ( quemjoga === 'player2') {
+//     quemjoga = 'player1'
+//   }
+//   return quemjoga
+// }
 
 /* ----------------------- CAUANA ----------------------- */
 

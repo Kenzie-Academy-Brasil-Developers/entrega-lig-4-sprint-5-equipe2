@@ -51,6 +51,19 @@ ol {
 ol li {
     font-size: 14px;
 }
+
+.player1{
+background-image: url('../img/player1.png');
+width: 15px;
+border-radius: 5px;
+}
+
+.player2{
+background-image: url('../img/player2.png');
+width: 15px;
+border-radius: 5px;
+
+}
 /* ----------------------- CAUANA ----------------------- */
 
 /* ------------------------ MERO ------------------------ */

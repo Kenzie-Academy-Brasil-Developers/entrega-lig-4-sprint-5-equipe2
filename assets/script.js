@@ -3,6 +3,7 @@
 const instrutions = document.querySelector('.instrutions');
 const game = document.querySelector('.game-hidden')
 const botaoStart = document.getElementById('play');
+let quemjoga = 'player1'
 
 botaoStart.addEventListener('click', hiddenInstrutions)
  
@@ -12,6 +13,51 @@ function hiddenInstrutions() {
     game.classList.remove('game-hidden')
     game.classList.add('show-game')
 };
+
+// Adicionando função para percorrer colunas
+function selecionarColuna() {
+const selectcoluna = document.querySelectorAll('.column')
+
+selectcoluna.forEach(column => {
+  column.addEventListener("click", jogar)
+})
+}
+
+// Função jogar adicionando troca de players
+function jogar(event) {
+  const play = document.querySelectorAll('.column')
+
+  for (let i = 0; i < play.length; i++) {
+    if (quemjoga === 'player1') {
+      let ficha = document.createElement('div')
+        ficha.classList.add('player1')
+            play[i].appendChild(ficha)
+
+            gamePosition.push()
+            quemjoga = 'player2'
+
+          } else if (quemjoga === 'player2'){
+
+            let ficha = document.createElement('div')
+            ficha.classList.add('player2')
+            play[i].appendChild(ficha)
+
+            // ESCREVER AQUI COMO APARECER NA ÚLTIMA POSIÇÃO
+            quemjoga = 'player1'
+          }
+
+  }
+
+}
+// // Função para mudar o jogador a cada clique (tentar inserir dentro da função jogar()??????)
+// function mudarJogador() {
+//   if( quemjoga === 'player1') {
+//     quemjoga = 'player2'
+//   } else if ( quemjoga === 'player2') {
+//     quemjoga = 'player1'
+//   }
+//   return quemjoga
+// }
 
 /* ----------------------- CAUANA ----------------------- */
 

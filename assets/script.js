@@ -86,8 +86,8 @@ botaoStart.addEventListener("click", hiddenInstrutions);
 const jogador1 = 1;
 
 function checarVitoria(gamePosition) {
-  const edgeX = gamePosition[0].length - 2;
-  const edgeY = gamePosition.length - 2;
+  const edgeX = gamePosition[0].length - 3;
+  const edgeY = gamePosition.length - 3;
 
   //horizontal
   for (let y = 0; y < gamePosition.length; y++) {

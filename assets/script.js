@@ -1,59 +1,56 @@
 /* ----------------------- CAUANA ----------------------- */
-const instrutions = document.querySelector('.instrutions');
-const game = document.querySelector('.game-hidden')
-const botaoStart = document.getElementById('play');
-let quemjoga = 'player1'
+const instrutions = document.querySelector(".instrutions");
+const game = document.querySelector(".game-hidden");
+const botaoStart = document.getElementById("play");
+let jogador = 1;
 
 function hiddenInstrutions() {
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
   createGamePosition(0);
   createBoard();
+  selecionarColuna(); //Adicionar ao click para chamar a função
 }
 
 // Adicionando função para percorrer colunas
 function selecionarColuna() {
-const selectcoluna = document.querySelectorAll('.column')
+  const selectcoluna = document.querySelectorAll(".column");
 
-selectcoluna.forEach(column => {
-  column.addEventListener("click", jogar)
-})
+  selectcoluna.forEach((column) => {
+    column.addEventListener("click", appendChildPosition);
+  });
 }
 
-// Função jogar adicionando troca de players e criando as fichas
-function jogar(event) {
-  const play = document.querySelectorAll('.column')
+// Função de controle da situação do jogo
 
-  for (let i = 0; i < play.length; i++) {
-    if (quemjoga === 'player1') {
-      let ficha = document.createElement('div')
-        ficha.classList.add('player1')
-            play[i].appendChild(ficha)
+function appendChildPosition(evt) {
+  let divColumnInfo = evt.currentTarget;
+  let columnArrayDivs = evt.currentTarget.childNodes;
 
-            gamePosition.push() //Nao é assim, não sei percorrer a array
-            quemjoga = 'player2'
-
-          } else if (quemjoga === 'player2'){
-
-            let ficha = document.createElement('div')
-            ficha.classList.add('player2')
-            play[i].appendChild(ficha)
-
-            gamePosition.push() //Nao é assim, não sei percorrer a array
-            quemjoga = 'player1'
-          }
+  for (let i = columnArrayDivs.length - 1; i >= 0; i--) {
+    let checkDiv = columnArrayDivs[i].childElementCount;
+    if (checkDiv === 0) {
+      let linha = columnArrayDivs[i].dataset.row;
+      let coluna = divColumnInfo.dataset.column;
+      if (gamePosition[coluna][linha] === 0 && jogador === 1) {
+        gamePosition[coluna][linha] = jogador;
+        let ficha = document.createElement("div");
+        ficha.classList.add("player1");
+        columnArrayDivs[i].appendChild(ficha);
+        checarVitoria(gamePosition);
+        jogador = 2;
+      } else {
+        gamePosition[coluna][linha] = jogador;
+        let ficha = document.createElement("div");
+        ficha.classList.add("player2");
+        columnArrayDivs[i].appendChild(ficha);
+        checarVitoria(gamePosition);
+        jogador = 1;
+      }
+      i = 0;
+    }
   }
 }
-
-// // Função para mudar o jogador a cada clique (tentar inserir dentro da função jogar()??????)
-// function mudarJogador() {
-//   if( quemjoga === 'player1') {
-//     quemjoga = 'player2'
-//   } else if ( quemjoga === 'player2') {
-//     quemjoga = 'player1'
-//   }
-//   return quemjoga
-// }
 
 /* ----------------------- CAUANA ----------------------- */
 
@@ -83,11 +80,9 @@ botaoStart.addEventListener("click", hiddenInstrutions);
 /* ------------------------ MERO ------------------------ */
 
 /* ------------------------ MAURO ----------------------- */
-const jogador1 = 1;
-
 function checarVitoria(gamePosition) {
-  const edgeX = gamePosition[0].length - 2;
-  const edgeY = gamePosition.length - 2;
+  const edgeX = gamePosition[0].length - 3;
+  const edgeY = gamePosition.length - 3;
 
   //horizontal
   for (let y = 0; y < gamePosition.length; y++) {
@@ -99,7 +94,8 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y][x + 2] &&
           cell === gamePosition[y][x + 3]
         ) {
-          return `Jogador ${gamePosition[y][x]} venceu `;
+          // return `Jogador ${gamePosition[y][x]} venceu `;
+          console.log(`Jogador ${gamePosition[y][x]} venceu `);
         }
       }
     }
@@ -114,7 +110,8 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y + 2][x] &&
           cell === gamePosition[y + 3][x]
         ) {
-          return `Jogador ${gamePosition[y][x]} venceu `;
+          // return `Jogador ${gamePosition[y][x]} venceu `;
+          console.log(`Jogador ${gamePosition[y][x]} venceu `);
         }
       }
     }
@@ -129,7 +126,8 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y + 2][x + 2] &&
           cell === gamePosition[y + 3][x + 3]
         ) {
-          return `Jogador ${gamePosition[y][x]} venceu `;
+          // return `Jogador ${gamePosition[y][x]} venceu `;
+          console.log(`Jogador ${gamePosition[y][x]} venceu `);
         }
       }
     }
@@ -144,7 +142,8 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y - 2][x + 2] &&
           cell === gamePosition[y - 3][x + 3]
         ) {
-          return `Jogador ${gamePosition[y][x]} venceu `;
+          // return `Jogador ${gamePosition[y][x]} venceu `;
+          console.log(`Jogador ${gamePosition[y][x]} venceu `);
         }
       }
     }
@@ -158,10 +157,7 @@ function checarVitoria(gamePosition) {
 //}
 
 /* ----------------------- VAGNER ----------------------- */
-function captureData(elementColumn, elementLine, player) {
-  gamePosition[elementColumn][elementLine] = player;
-}
-
+// CRIA O ARRAY COM VALORES ZERADOS
 let gamePosition = [];
 function createGamePosition(n) {
   gamePosition = [];
@@ -173,4 +169,4 @@ function createGamePosition(n) {
     gamePosition.push(newColum);
   }
 }
-/* ----------------------- VAGNER ----------------------- */
+// /* ----------------------- VAGNER ----------------------- */

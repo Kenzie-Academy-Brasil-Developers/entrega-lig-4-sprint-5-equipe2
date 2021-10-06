@@ -23,7 +23,7 @@ selectcoluna.forEach(column => {
 })
 }
 
-// Função jogar adicionando troca de players
+// Função jogar adicionando troca de players e criando as fichas
 function jogar(event) {
   const play = document.querySelectorAll('.column')
 
@@ -33,7 +33,7 @@ function jogar(event) {
         ficha.classList.add('player1')
             play[i].appendChild(ficha)
 
-            gamePosition.push()
+            gamePosition.push() //Nao é assim, não sei percorrer a array
             quemjoga = 'player2'
 
           } else if (quemjoga === 'player2'){
@@ -42,13 +42,12 @@ function jogar(event) {
             ficha.classList.add('player2')
             play[i].appendChild(ficha)
 
-            // ESCREVER AQUI COMO APARECER NA ÚLTIMA POSIÇÃO
+            gamePosition.push() //Nao é assim, não sei percorrer a array
             quemjoga = 'player1'
           }
-
   }
-
 }
+
 // // Função para mudar o jogador a cada clique (tentar inserir dentro da função jogar()??????)
 // function mudarJogador() {
 //   if( quemjoga === 'player1') {

@@ -61,7 +61,7 @@ ol {
   align-items: center;
   align-content: center;
   color: white;
-  margin: 2px 20px 10px 20px;
+  margin: 10px;
   font-family: 'Chakra Petch', sans-serif;
 }
 ol li {
@@ -73,18 +73,18 @@ ol li {
 }
 
 .player1 {
-  background-image: url("../img/player1.png");
+  background-image: url("../img/kong.png");
   background-size: contain;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
 .player2 {
-  background-image: url("../img/player2.png"); /* Adicionar background positon center */
+  background-image: url("../img/godzilla.png"); /* Adicionar background positon center */
   background-size: contain;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
@@ -108,7 +108,6 @@ button:hover {
 }
 
 @keyframes tremer {
-  0% {margin-left: 0;}
   25% {margin-left: 7px;}
   50% {margin-left: 0;}
   75% {margin-left: -7px;}
@@ -122,26 +121,29 @@ button:hover {
 main {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #b11602;
+  opacity: 80%;
+  
   /* width: 8vw; */
   /* height: 70vh; */
 }
 
 .cell {
-  border: solid 1px black;
+  border: solid 1px white;
   display: flex;
   flex-direction: column;
   justify-content: center; /* alinhar a bolinha */
   align-items: center; /* alinhar a bolinha */
   /* flex-grow: 1; */
   box-sizing: border-box;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   margin: 0;
 }
 

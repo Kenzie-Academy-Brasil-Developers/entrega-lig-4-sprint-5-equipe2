@@ -78,6 +78,8 @@ ol li {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  animation-name: queda;
+  animation-duration: 2s;
 }
 
 .player2 {
@@ -86,6 +88,8 @@ ol li {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  animation-name: queda;
+  animation-duration: 2s;
 }
 
 button {
@@ -106,12 +110,37 @@ button:hover {
   animation: tremer .2s;
   animation-iteration-count: infinite;
 }
+@keyframes queda {
+  0%{
+      transform: translateY(-580%);
+  }
+  25%{
+      transform: translateY(0%);
+  }
+  50%{
+      transform: translateY(-10%);
+  }
+  100%{
+      transform: translateY(0%);
+  }
+}
 
 @keyframes tremer {
   25% {margin-left: 7px;}
   50% {margin-left: 0;}
   75% {margin-left: -7px;}
   100% {margin-left: 0;}
+}
+
+#div-player {
+  display:flex;
+  justify-content: center;
+}
+
+.player-now {
+  width: 50px;
+  height: 50px;
+  background-color: red;
 }
 
 /* ----------------------- CAUANA ----------------------- */
@@ -127,15 +156,16 @@ main {
 .column {
   display: flex;
   flex-direction: column;
-  background-color: #b11602;
-  opacity: 80%;
+  /* background-color: #b11602;
+  opacity: 80%; */
   
   /* width: 8vw; */
   /* height: 70vh; */
 }
 
 .cell {
-  border: solid 1px white;
+  border: solid 1.5px white;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center; /* alinhar a bolinha */

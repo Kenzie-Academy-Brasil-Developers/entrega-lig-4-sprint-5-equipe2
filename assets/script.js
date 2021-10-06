@@ -156,6 +156,8 @@ function checarVitoria(gamePosition) {
 //if (checarvitoria() == null && contagem de movimentos === 42){
 //  return tela de empate e reinicio;
 //}
+//botão de reiniciar e função de abrir aba de vitória com 
+//o botão reiniciar
 
 /* ----------------------- VAGNER ----------------------- */
 function captureData(elementColumn, elementLine, player) {

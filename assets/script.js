@@ -9,10 +9,17 @@ const divseta = document.getElementById('divseta')
 const divkong = document.getElementById('divkong')
 const winner = document.getElementById("vencedor");
 let jogador = 1;
-let totalFichas = 0;
+let totalFichas = 1;
 
 function hiddenInstrutions() {
-
+  // resetGame()
+  const body = document.getElementsByTagName("body")[0];
+  const main = document.getElementsByTagName("main")[0];
+  if (body.contains(main)) {
+    winner.classList = "";
+    winner.innerHTML = "";
+    body.removeChild(main);
+  }
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
   playerStr.removeAttribute('hidden')
@@ -126,7 +133,7 @@ function vencedor(parametro){
     const winner = document.getElementById("vencedor");
     winner.appendChild(span);
     winner.classList.add('ganhadorgod');
-    resetGame();
+    resetGame()
   }
 }
 
@@ -146,8 +153,8 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y][x + 2] &&
           cell === gamePosition[y][x + 3]
         ) {
-          console.log(`Jogador ${gamePosition[y][x]} venceu `);
           realcaCelulas([y], [x], [y], [x + 1], [y], [x + 2], [y], [x + 3]);
+          descelecionarColunas();
           return vencedor(cell)
         }
       }
@@ -211,13 +218,6 @@ function checarVitoria(gamePosition) {
 }
 /* ------------------------ MAURO ----------------------- */
 
-//condição de empate
-//if (checarvitoria() == null && contagem de movimentos === 42){
-//  return tela de empate e reinicio;
-//}
-//botão de reiniciar e função de abrir aba de vitória com 
-//o botão reiniciar
-
 /* ----------------------- VAGNER ----------------------- */
 // CRIA O ARRAY COM VALORES ZERADOS
 let gamePosition = [];
@@ -259,7 +259,7 @@ function realcaCelulas(x0, y0, x1, y1, x2, y2, x3, y3) {
 
 /* ------------- VERIFICA CONDIÇÃO DE EMPATE ------------ */
 function contarFichas(fixas) {
-  if (fixas === 41) {
+  if (fixas === 42) {
     const span = document.createElement("span");
     span.classList.add("spanEmpate")
     span.innerText = "Os Monstros fizeram as pazes..."; 
@@ -267,6 +267,7 @@ function contarFichas(fixas) {
     winner.classList.add('ganhadorkong1')
     winner.appendChild(span);
     descelecionarColunas();
+    resetGame()
   }
   totalFichas++;
 }
@@ -278,16 +279,16 @@ function descelecionarColunas() {
   });
 }
 
-// function resetGame(){
-  
-  
-//   totalFichas = 0;
-//   jogador = 1;
-//   winner.innerHTML = "";
-
-//   const main = document.getElementsByTagName("main")[0];
-//   main.innerHTML = "";
-//   botaoStart.innerText = "Jogar Novamente"
-//   winner.appendChild(botaoStart);
-// }
+function resetGame(){
+  totalFichas = 0;
+  jogador = 1;
+  nodesArray = [];
+  botaoStart.innerText = "Jogar Novamente"
+  const body = document.getElementsByTagName("body")[0];
+  const main = document.getElementsByTagName("main")[0];
+  if (body.contains(main)) {
+    main.appendChild(botaoStart);
+    botaoStart.style.position = "absolute";
+  }
+}
 // /* ----------------------- VAGNER ----------------------- */

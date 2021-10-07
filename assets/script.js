@@ -1,12 +1,18 @@
 /* ----------------------- CAUANA ----------------------- */
 const instrutions = document.querySelector(".instrutions");
 const game = document.querySelector(".game-hidden");
+const divPlayer = document.querySelector('.playerTurn')
 const botaoStart = document.getElementById("play");
+const playerStr = document.getElementById('playerStr')
 let jogador = 1;
 
 function hiddenInstrutions() {
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
+  playerStr.removeAttribute('hidden')
+  playerStr.innerText = ('Player 1, é a sua vez...')
+  divPlayer.classList.remove('playerTurn');
+  divPlayer.classList.add('nextPlayer');
   createGamePosition(0);
   createBoard();
   selecionarColuna(); //Adicionar ao click para chamar a função
@@ -39,6 +45,7 @@ function appendChildPosition(evt) {
         ficha.classList.add("player1");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
+        playerStr.innerText = ('Player 2, é a sua vez...');
         jogador = 2;
       } else {
         gamePosition[coluna][linha] = jogador;
@@ -46,6 +53,7 @@ function appendChildPosition(evt) {
         ficha.classList.add("player2");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
+        playerStr.innerText = ('Player 1, é a sua vez...');
         jogador = 1;
       }
       i = 0;

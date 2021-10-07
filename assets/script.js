@@ -12,6 +12,7 @@ let jogador = 1;
 let totalFichas = 0;
 
 function hiddenInstrutions() {
+
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
   playerStr.removeAttribute('hidden')
@@ -116,7 +117,7 @@ function vencedor(parametro){
     const winner = document.getElementById("vencedor");
     winner.appendChild(span);
     winner.classList.add('ganhadorkong')
-
+    resetGame()
 
   }else if(parametro == 2){
     const span = document.createElement("span");
@@ -124,8 +125,8 @@ function vencedor(parametro){
     span.innerText = "Godzilla,o Rei dos Monstros!";
     const winner = document.getElementById("vencedor");
     winner.appendChild(span);
-    winner.classList.add('ganhadorgod')
-
+    winner.classList.add('ganhadorgod');
+    resetGame();
   }
 }
 
@@ -145,16 +146,7 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y][x + 2] &&
           cell === gamePosition[y][x + 3]
         ) {
-          // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
-          // winner.classList.add('ganhadorgod')
-          // const span = document.createElement("span");
-    // span.classList.add("spanVitoria")
-    // span.innerText = "King Kong Venceu"; 
-    // const winner = document.getElementById("vencedor");
-    // winner.appendChild(span);
-
-
           realcaCelulas([y], [x], [y], [x + 1], [y], [x + 2], [y], [x + 3]);
           return vencedor(cell)
         }
@@ -176,6 +168,7 @@ function checarVitoria(gamePosition) {
           winner.classList.add('ganhadorgod')
           winner.innerText = 'god ganhou'
           realcaCelulas([y], [x], [y + 1], [x], [y + 2], [x], [y + 3], [x]);
+          descelecionarColunas();
           return vencedor(cell)
         }
       }
@@ -191,16 +184,15 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y + 2][x + 2] &&
           cell === gamePosition[y + 3][x + 3]
         ) {
-          // return `Jogador ${gamePosition[y][x]} venceu `;
-          console.log(`Jogador ${gamePosition[y][x]} venceu `);
           realcaCelulas([y], [x], [y + 1], [x + 1], [y + 2], [x + 2], [y + 3], [x + 3]);
+          descelecionarColunas();
           return vencedor(cell)
         }
       }
     }
   }
   //diagonal 159
-  for (let y = 2; y < gamePosition.length; y++) {
+  for (let y = 3; y < gamePosition.length; y++) {
     for (let x = 0; x < edgeX; x++) {
       cell = gamePosition[y][x];
       if (cell !== 0) {
@@ -209,9 +201,8 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y - 2][x + 2] &&
           cell === gamePosition[y - 3][x + 3]
         ) {
-          // return `Jogador ${gamePosition[y][x]} venceu `;
-          console.log(`Jogador ${gamePosition[y][x]} venceu `);
           realcaCelulas([y], [x], [y - 1], [x + 1], [y - 2], [x + 2], [y - 3], [x + 3]);
+          descelecionarColunas();
           return vencedor(cell)
         }
       }
@@ -269,7 +260,12 @@ function realcaCelulas(x0, y0, x1, y1, x2, y2, x3, y3) {
 /* ------------- VERIFICA CONDIÇÃO DE EMPATE ------------ */
 function contarFichas(fixas) {
   if (fixas === 41) {
-    console.log("vocês são muito ruims!!!");
+    const span = document.createElement("span");
+    span.classList.add("spanEmpate")
+    span.innerText = "Os Monstros fizeram as pazes..."; 
+    const winner = document.getElementById("vencedor");
+    winner.classList.add('ganhadorkong1')
+    winner.appendChild(span);
     descelecionarColunas();
   }
   totalFichas++;
@@ -281,4 +277,17 @@ function descelecionarColunas() {
     column.removeEventListener("click", appendChildPosition);
   });
 }
+
+// function resetGame(){
+  
+  
+//   totalFichas = 0;
+//   jogador = 1;
+//   winner.innerHTML = "";
+
+//   const main = document.getElementsByTagName("main")[0];
+//   main.innerHTML = "";
+//   botaoStart.innerText = "Jogar Novamente"
+//   winner.appendChild(botaoStart);
+// }
 // /* ----------------------- VAGNER ----------------------- */

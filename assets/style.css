@@ -142,7 +142,7 @@ button:hover {
 }
 
 .divseta1 {
-  transform: rotate(900deg);
+  transform: rotate(900deg) scaleY(-1);
   transition: 1s;
 
 }

@@ -2,7 +2,7 @@
 
 @font-face {
   font-family:'Bad Grunge';
-  src: url('BAD GRUNGE.ttf') format('truetype');
+  src: url('BADGRUNGE.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -13,9 +13,9 @@ body {
 }
 h2 {
   font-family: 'Bad Grunge','Bungee', cursive;
-  font-size: 70px;
+  font-size: 60px;
   color: #f7f6df;
-  text-shadow: 1px 7px 1px #b11602;
+  text-shadow: 2px 8px 1px #b11602;
   text-align: center;
   margin: 20px;
   line-height: 50px;
@@ -70,13 +70,13 @@ ol {
   align-content: center;
   color: white;
   margin: 10px;
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: 'Krub', sans-serif;
 }
 
 ol li {
   font-size: 14px;
-  text-shadow: 2px 2px 1px black;
-  margin: 6px 0px 6px 0px;
+  /* text-shadow: 2px 2px 1px black; */
+  margin: 6px 5px 6px 5px;
   display:flex;
   text-align: center;
 }
@@ -133,6 +133,26 @@ button:hover {
   100% {margin-left: 0;}
 }
 
+.divgod1 {
+  opacity: 20%
+}
+
+.divkong1 {
+  opacity: 20%
+}
+
+.divseta1 {
+  transform: rotate(900deg);
+  transition: 1s;
+
+}
+
+.divseta2 {
+  transform: rotate(1800deg);
+  transition: 1s;
+
+}
+
 /* ----------------------- CAUANA ----------------------- */
 
 /* ------------------------ MERO ------------------------ */
@@ -140,7 +160,7 @@ button:hover {
 main {
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .column {
@@ -172,6 +192,14 @@ main {
 #divPlayer {
   display:flex;
   justify-content: center;
+  color: white;
+
+}
+
+#divPlayer img {
+  background-size: contain;
+  width: 35px;
+  height: 35px;
 }
 
 .nextPlayer {
@@ -180,7 +208,42 @@ main {
   color: #f7f6df;
   text-shadow: 1px 2px 1px #195852;
 }
+#divgod, #divkong {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+  text-transform: uppercase;
+  font-family: 'Anton','Bad Grunge', 'Krub', sans-serif;
+  font-size: 20px;
+  flex-wrap: nowrap;
+}
 
+#divgod img, #divkong img{
+  padding: 10px;
+}
+
+#divseta {
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/arrow.png");
+    background-size: contain; 
+    background-repeat: no-repeat;
+}
+
+#divseta img {
+  background-color: white;
+  margin:5px;
+  display:flex;
+}
+
+.nextPlayer {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+} 
 /* ------------------------ MERO ------------------------ */
 
 /* ------------------------ MAURO ----------------------- */
@@ -210,6 +273,28 @@ main {
   .player2 {
     width: 47px;
     height: 47px;
+  }
+
+  #divPlayer img {
+    width: 60px;
+    height: 60px;
+  }
+  #divgod, #divkong {
+    margin: 5px;
+    font-size: 25px;
+  }
+  
+  #divgod img, #divkong img{
+    padding: 10px;
+  }
+  
+  #divseta {
+      width: 40px;
+      height: 40px;
+  }
+  
+  .divseta img {
+    margin:5px;
   }
 
 }

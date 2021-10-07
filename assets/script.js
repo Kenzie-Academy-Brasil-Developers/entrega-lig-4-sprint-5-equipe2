@@ -4,13 +4,17 @@ const game = document.querySelector(".game-hidden");
 const divPlayer = document.querySelector('.playerTurn')
 const botaoStart = document.getElementById("play");
 const playerStr = document.getElementById('playerStr')
+const divgod = document.getElementById('divgod')
+console.log(divgod)
+const divseta = document.getElementById('divseta')
+const divkong = document.getElementById('divkong')
 let jogador = 1;
 
 function hiddenInstrutions() {
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
   playerStr.removeAttribute('hidden')
-  playerStr.innerText = ('Player 1, é a sua vez...')
+  // playerStr.innerText = ('Player 1, é a sua vez...')
   divPlayer.classList.remove('playerTurn');
   divPlayer.classList.add('nextPlayer');
   createGamePosition(0);
@@ -40,21 +44,33 @@ function appendChildPosition(evt) {
       let linha = columnArrayDivs[i].dataset.row;
       let coluna = divColumnInfo.dataset.column;
       if (gamePosition[coluna][linha] === 0 && jogador === 1) {
+
         gamePosition[coluna][linha] = jogador;
         let ficha = document.createElement("div");
         ficha.classList.add("player1");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
-        playerStr.innerText = ('Player 2, é a sua vez...');
         jogador = 2;
+
+        divgod.classList.remove('divgod1');
+        divkong.classList.add('divkong1');
+        divseta.classList.add('divseta1');
+        divseta.classList.remove('divseta2')
+
       } else {
         gamePosition[coluna][linha] = jogador;
         let ficha = document.createElement("div");
         ficha.classList.add("player2");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
-        playerStr.innerText = ('Player 1, é a sua vez...');
+        
         jogador = 1;
+
+        divgod.classList.add('divgod1');
+        divkong.classList.remove('divkong1');
+        divseta.classList.remove('divseta1')
+        divseta.classList.add('divseta2');
+
       }
       i = 0;
     }

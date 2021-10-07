@@ -1,7 +1,29 @@
 /* ----------------------- CAUANA ----------------------- */
+
+body {
+  background-image: url(../img/wallpaper1.jpg);
+  background-position: center;
+}
+h2 {
+  font-family: 'Bungee', cursive;
+  font-size: 45px;
+  color: #f7f6df;
+  text-shadow: 1px 7px 1px #b11602;
+  text-align: center;
+  margin: 20px;
+}
+
 .instrutions {
   display: flex;
   flex-direction: column;
+  
+}
+
+.title-instrutions {
+  font-family: 'Bungee', cursive;
+  font-size: 22px;
+  color: #f7f6df;
+  text-shadow: 1px 2px 1px #195852;
 }
 
 .hidden {
@@ -22,10 +44,7 @@
   justify-content: center;
   align-content: center;
   margin: 20px;
-}
-
-ol li {
-  font-size: 16px;
+  
 }
 
 #div-play {
@@ -39,30 +58,80 @@ ol li {
 ol {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  align-content: flex-start;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  align-items: center;
+  align-content: center;
+  color: white;
+  margin: 10px;
+  font-family: 'Chakra Petch', sans-serif;
 }
 ol li {
   font-size: 14px;
+  text-shadow: 2px 2px 1px black;
+  margin: 6px 0px 6px 0px;
+  display:flex;
+  text-align: center;
 }
 
 .player1 {
-  background-image: url("../img/player1.png");
+  background-image: url("../img/kong.png");
   background-size: contain;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  animation-name: queda;
+  animation-duration: 2s;
 }
 
 .player2 {
-  background-image: url("../img/player2.png"); /* Adicionar background positon center */
+  background-image: url("../img/godzilla.png"); /* Adicionar background positon center */
   background-size: contain;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  animation-name: queda;
+  animation-duration: 2s;
 }
+
+button {
+  background-color: #d83806;
+  font-family: 'Bungee', cursive;
+  font-size: 22px;
+  color: white;
+}
+
+button:hover {
+  background-color: white;
+  color: #012945;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+#play {
+  animation: tremer .2s;
+  animation-iteration-count: infinite;
+}
+@keyframes queda {
+  0%{
+      transform: translateY(-580%);
+  }
+  25%{
+      transform: translateY(0%);
+  }
+  50%{
+      transform: translateY(-10%);
+  }
+  100%{
+      transform: translateY(0%);
+  }
+}
+
+@keyframes tremer {
+  25% {margin-left: 7px;}
+  50% {margin-left: 0;}
+  75% {margin-left: -7px;}
+  100% {margin-left: 0;}
+}
+
 /* ----------------------- CAUANA ----------------------- */
 
 /* ------------------------ MERO ------------------------ */
@@ -70,26 +139,43 @@ ol li {
 main {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .column {
   display: flex;
   flex-direction: column;
+  /* background-color: #b11602;
+  opacity: 80%; */
+  
   /* width: 8vw; */
   /* height: 70vh; */
 }
 
 .cell {
-  border: solid 1px black;
+  border: solid 1.5px white;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center; /* alinhar a bolinha */
   align-items: center; /* alinhar a bolinha */
   /* flex-grow: 1; */
   box-sizing: border-box;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   margin: 0;
+}
+
+#divPlayer {
+  display:flex;
+  justify-content: center;
+}
+
+.nextPlayer {
+  font-family: 'Bungee', cursive;
+  font-size: 22px;
+  color: #f7f6df;
+  text-shadow: 1px 2px 1px #195852;
 }
 
 /* ------------------------ MERO ------------------------ */
@@ -99,8 +185,5 @@ main {
 /* ------------------------ MAURO ----------------------- */
 
 /* ----------------------- VAGNER ----------------------- */
-h2 {
-  text-align: center;
-  margin: 30px;
-}
+
 /* ----------------------- VAGNER ----------------------- */

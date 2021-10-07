@@ -298,6 +298,42 @@ main {
 
 }
 
+/*EMPATE*/
+
+.ganhadorgod1 {
+  width: 50px;
+  height: 50px;
+  background-image: url("../img/godzilla.png");
+  background-size: contain;
+  position: relative;
+  right: 90px;
+}
+
+.ganhadorkong1 {
+  width: 50px;
+  height: 50px;
+  background-image: url("../img/kong.png");
+  background-size: contain;
+  position: relative;
+  left: 90px;
+}
+
+
+.spanEmpate {
+  color: white;
+  text-shadow: 2px 2px 1px #b11602;
+  font-size: 30px;
+  font-family: 'Bad Grunge','Anton', sans-serif;
+  text-transform: uppercase;
+  line-height: 25px;
+  min-width: 190px;
+  display:flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  left: 45px;
+}
+
 
 /* ------------------------ MAURO ----------------------- */
 
@@ -357,6 +393,27 @@ main {
   .ganhadorgod, .ganhadorkong {
     right: 123px;
   }
+
+  .ganhadorgod1 {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    right: 120px;
+  }
   
+  .ganhadorkong1 {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: 120px;
+  }
+  
+  
+  .spanEmpate {
+    font-size: 40px;
+    line-height: 30px;
+    min-width: 250px;
+    left: 65px;
+  }  
 
 }

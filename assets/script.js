@@ -122,7 +122,7 @@ function vencedor(parametro){
   }else if(parametro == 2){
     const span = document.createElement("span");
     span.classList.add("spanVitoria")
-    span.innerText = "Godzilla,o Rei dos Monstros!";
+    span.innerText = "Godzilla, o Rei dos Monstros!";
     const winner = document.getElementById("vencedor");
     winner.appendChild(span);
     winner.classList.add('ganhadorgod');
@@ -264,7 +264,9 @@ function contarFichas(fixas) {
     span.classList.add("spanEmpate")
     span.innerText = "Os Monstros fizeram as pazes..."; 
     const winner = document.getElementById("vencedor");
-    winner.classList.add('ganhadorkong1')
+    const winner2 = document.getElementById('vencedor2')
+    winner.classList.add('ganhadorgod1')
+    winner2.classList.add('ganhadorkong1')
     winner.appendChild(span);
     descelecionarColunas();
   }

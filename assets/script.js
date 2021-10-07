@@ -113,8 +113,8 @@ function vencedor(parametro){
     span.innerText = "King-Kong, o Rei dos Monstros!"; 
     const winner = document.getElementById("vencedor");
     winner.appendChild(span);
-
     winner.classList.add('ganhadorkong')
+
 
   }else if(parametro == 2){
     const span = document.createElement("span");
@@ -122,8 +122,8 @@ function vencedor(parametro){
     span.innerText = "Godzilla,o Rei dos Monstros!";
     const winner = document.getElementById("vencedor");
     winner.appendChild(span);
-
     winner.classList.add('ganhadorgod')
+
   }
 }
 

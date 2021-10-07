@@ -9,6 +9,7 @@ console.log(divgod)
 const divseta = document.getElementById('divseta')
 const divkong = document.getElementById('divkong')
 let jogador = 1;
+let totalFichas = 0;
 
 function hiddenInstrutions() {
   instrutions.classList.remove("instrutions");
@@ -50,6 +51,7 @@ function appendChildPosition(evt) {
         ficha.classList.add("player1");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
+        contarFichas(totalFichas);
         jogador = 2;
 
         divgod.classList.remove('divgod1');
@@ -63,7 +65,7 @@ function appendChildPosition(evt) {
         ficha.classList.add("player2");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
-        
+        contarFichas(totalFichas);
         jogador = 1;
 
         divgod.classList.add('divgod1');
@@ -212,8 +214,31 @@ function createNodesArray() {
 //MARCA AS CÉLULAS QUE DERAM A VITÓRIA
 function realcaCelulas(x0, y0, x1, y1, x2, y2, x3, y3) {
   nodesArray[x0][y0].style.backgroundColor = "green";
+  nodesArray[x0][y0].style.border = "3px solid green";
+  
   nodesArray[x1][y1].style.backgroundColor = "green";
+  nodesArray[x1][y1].style.border = "3px solid green";
+
   nodesArray[x2][y2].style.backgroundColor = "green";
+  nodesArray[x2][y2].style.border = "3px solid green";
+
   nodesArray[x3][y3].style.backgroundColor = "green";
+  nodesArray[x3][y3].style.border = "3px solid green";
+}
+
+/* ------------- VERIFICA CONDIÇÃO DE EMPATE ------------ */
+function contarFichas(fixas) {
+  if (fixas === 41) {
+    console.log("vocês são muito ruims!!!");
+    descelecionarColunas();
+  }
+  totalFichas++;
+}
+
+function descelecionarColunas() {
+  const selectcoluna = document.querySelectorAll(".column");
+  selectcoluna.forEach((column) => {
+    column.removeEventListener("click", appendChildPosition);
+  });
 }
 // /* ----------------------- VAGNER ----------------------- */

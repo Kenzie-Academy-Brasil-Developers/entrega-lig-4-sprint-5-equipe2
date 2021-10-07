@@ -5,9 +5,9 @@ const divPlayer = document.querySelector('.playerTurn')
 const botaoStart = document.getElementById("play");
 const playerStr = document.getElementById('playerStr')
 const divgod = document.getElementById('divgod')
-console.log(divgod)
 const divseta = document.getElementById('divseta')
 const divkong = document.getElementById('divkong')
+const winner = document.getElementById("vencedor");
 let jogador = 1;
 let totalFichas = 0;
 
@@ -107,6 +107,30 @@ botaoStart.addEventListener("click", hiddenInstrutions);
 /* ------------------------ MERO ------------------------ */
 
 /* ------------------------ MAURO ----------------------- */
+
+function vencedor(parametro){
+  if(parametro == 1){
+    const span = document.createElement("span");
+    span.classList.add("spanVitoria")
+    span.innerText = "King-Kong, o Rei dos Monstros!"; 
+    const winner = document.getElementById("vencedor");
+    winner.appendChild(span);
+    winner.classList.add('ganhadorkong')
+
+
+  }else if(parametro == 2){
+    const span = document.createElement("span");
+    span.classList.add("spanVitoria")
+    span.innerText = "Godzilla,o Rei dos Monstros!";
+    const winner = document.getElementById("vencedor");
+    winner.appendChild(span);
+    winner.classList.add('ganhadorgod')
+
+  }
+}
+
+const jogador1 = 1;
+
 function checarVitoria(gamePosition) {
   const edgeX = gamePosition[0].length - 3;
   const edgeY = gamePosition.length - 3;
@@ -123,7 +147,16 @@ function checarVitoria(gamePosition) {
         ) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          // winner.classList.add('ganhadorgod')
+          // const span = document.createElement("span");
+    // span.classList.add("spanVitoria")
+    // span.innerText = "King Kong Venceu"; 
+    // const winner = document.getElementById("vencedor");
+    // winner.appendChild(span);
+
+
           realcaCelulas([y], [x], [y], [x + 1], [y], [x + 2], [y], [x + 3]);
+          return vencedor(cell)
         }
       }
     }
@@ -140,7 +173,10 @@ function checarVitoria(gamePosition) {
         ) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          winner.classList.add('ganhadorgod')
+          winner.innerText = 'god ganhou'
           realcaCelulas([y], [x], [y + 1], [x], [y + 2], [x], [y + 3], [x]);
+          return vencedor(cell)
         }
       }
     }
@@ -158,6 +194,7 @@ function checarVitoria(gamePosition) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
           realcaCelulas([y], [x], [y + 1], [x + 1], [y + 2], [x + 2], [y + 3], [x + 3]);
+          return vencedor(cell)
         }
       }
     }
@@ -175,6 +212,7 @@ function checarVitoria(gamePosition) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
           realcaCelulas([y], [x], [y - 1], [x + 1], [y - 2], [x + 2], [y - 3], [x + 3]);
+          return vencedor(cell)
         }
       }
     }
@@ -186,6 +224,8 @@ function checarVitoria(gamePosition) {
 //if (checarvitoria() == null && contagem de movimentos === 42){
 //  return tela de empate e reinicio;
 //}
+//botão de reiniciar e função de abrir aba de vitória com 
+//o botão reiniciar
 
 /* ----------------------- VAGNER ----------------------- */
 // CRIA O ARRAY COM VALORES ZERADOS

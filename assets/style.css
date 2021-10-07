@@ -248,6 +248,57 @@ main {
 
 /* ------------------------ MAURO ----------------------- */
 
+.ganhadorkong {
+  width: 80px;
+  height: 80px;
+  background-image: url("../img/kong.png");
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display:flex;
+  align-items: flex-start;
+  position: relative;
+  right: 95px;
+}
+.ganhadorgod {
+  width: 80px;
+  height: 80px;
+  background-image: url("../img/godzilla.png");
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display:flex;
+  align-items: flex-start;
+  position: relative;
+  right: 95px;
+}
+
+.spanVitoria {
+  color: white;
+  text-shadow: 2px 2px 1px #b11602;
+  font-size: 40px;
+  font-family: 'Bad Grunge','Anton', sans-serif;
+  text-transform: uppercase;
+  line-height: 25px;
+  min-width: 190px;
+  display:flex;
+  align-items: center;
+  position: relative;
+  left: 90px;
+  top: 10px;
+}
+
+#abaVencedores{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#vencedor {
+  display:flex;
+
+}
+
+
 /* ------------------------ MAURO ----------------------- */
 
 /* ----------------------- VAGNER ----------------------- */
@@ -296,5 +347,16 @@ main {
   .divseta img {
     margin:5px;
   }
+
+  .spanVitoria {
+    font-size: 50px;
+    line-height: 30px;
+    min-width: 250px;
+  }
+
+  .ganhadorgod, .ganhadorkong {
+    right: 123px;
+  }
+  
 
 }

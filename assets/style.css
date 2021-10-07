@@ -133,22 +133,7 @@ button:hover {
   100% {margin-left: 0;}
 }
 
-#div-player {
-  display:flex;
-  justify-content: center;
-}
 
-.player-now {
-  width: 280px;
-  height: 50px;
-  background-color: transparent;
-  color: white;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  font-size: 20px;
-}
 
 /* ----------------------- CAUANA ----------------------- */
 
@@ -184,6 +169,18 @@ main {
   width: 40px;
   height: 40px;
   margin: 0;
+}
+
+#divPlayer {
+  display:flex;
+  justify-content: center;
+}
+
+.nextPlayer {
+  font-family: 'Bungee', cursive;
+  font-size: 22px;
+  color: #f7f6df;
+  text-shadow: 1px 2px 1px #195852;
 }
 
 /* ------------------------ MERO ------------------------ */

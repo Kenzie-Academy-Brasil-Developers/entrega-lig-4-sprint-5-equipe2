@@ -19,6 +19,10 @@ function hiddenInstrutions() {
     winner.classList = "";
     winner.innerHTML = "";
     body.removeChild(main);
+    if(document.getElementById("vencedor2")){
+      const winner2 = document.getElementById('vencedor2');
+      winner2.classList = ""; 
+    }
   }
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");

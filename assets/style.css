@@ -132,17 +132,6 @@ button:hover {
   100% {margin-left: 0;}
 }
 
-#div-player {
-  display:flex;
-  justify-content: center;
-}
-
-.player-now {
-  width: 50px;
-  height: 50px;
-  background-color: red;
-}
-
 /* ----------------------- CAUANA ----------------------- */
 
 /* ------------------------ MERO ------------------------ */
@@ -175,6 +164,18 @@ main {
   width: 50px;
   height: 50px;
   margin: 0;
+}
+
+#divPlayer {
+  display:flex;
+  justify-content: center;
+}
+
+.nextPlayer {
+  font-family: 'Bungee', cursive;
+  font-size: 22px;
+  color: #f7f6df;
+  text-shadow: 1px 2px 1px #195852;
 }
 
 /* ------------------------ MERO ------------------------ */

@@ -10,6 +10,7 @@ function hiddenInstrutions() {
   createGamePosition(0);
   createBoard();
   selecionarColuna(); //Adicionar ao click para chamar a função
+  createNodesArray();
 }
 
 // Adicionando função para percorrer colunas
@@ -96,6 +97,7 @@ function checarVitoria(gamePosition) {
         ) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          realcaCelulas([y], [x], [y], [x + 1], [y], [x + 2], [y], [x + 3]);
         }
       }
     }
@@ -112,6 +114,7 @@ function checarVitoria(gamePosition) {
         ) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          realcaCelulas([y], [x], [y + 1], [x], [y + 2], [x], [y + 3], [x]);
         }
       }
     }
@@ -128,6 +131,7 @@ function checarVitoria(gamePosition) {
         ) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          realcaCelulas([y], [x], [y + 1], [x + 1], [y + 2], [x + 2], [y + 3], [x + 3]);
         }
       }
     }
@@ -144,6 +148,7 @@ function checarVitoria(gamePosition) {
         ) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
           console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          realcaCelulas([y], [x], [y - 1], [x + 1], [y - 2], [x + 2], [y - 3], [x + 3]);
         }
       }
     }
@@ -168,5 +173,23 @@ function createGamePosition(n) {
     }
     gamePosition.push(newColum);
   }
+}
+
+//CRIA UM ARRAY DOS NODES PARA REALÇAR AS CÉLULAS QUE DEU CONDIÇÃO DE VITÓRIA
+let nodesArray = [];
+function createNodesArray() {
+  const colunasArray = document.getElementsByTagName("main")[0].childNodes;
+
+  colunasArray.forEach((coluna) => {
+    nodesArray.push(coluna.childNodes);
+  });
+}
+
+//MARCA AS CÉLULAS QUE DERAM A VITÓRIA
+function realcaCelulas(x0, y0, x1, y1, x2, y2, x3, y3) {
+  nodesArray[x0][y0].style.backgroundColor = "green";
+  nodesArray[x1][y1].style.backgroundColor = "green";
+  nodesArray[x2][y2].style.backgroundColor = "green";
+  nodesArray[x3][y3].style.backgroundColor = "green";
 }
 // /* ----------------------- VAGNER ----------------------- */

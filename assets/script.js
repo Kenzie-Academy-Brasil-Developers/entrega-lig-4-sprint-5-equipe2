@@ -10,7 +10,7 @@ function hiddenInstrutions() {
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
   playerStr.removeAttribute('hidden')
-  playerStr.innerText = ('Player 1, é a sua vez...')
+  // playerStr.innerText = ('Player 1, é a sua vez...')
   divPlayer.classList.remove('playerTurn');
   divPlayer.classList.add('nextPlayer');
   createGamePosition(0);
@@ -44,7 +44,7 @@ function appendChildPosition(evt) {
         ficha.classList.add("player1");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
-        playerStr.innerText = ('Player 2, é a sua vez...');
+        // playerStr.innerText = ('Player 2, é a sua vez...');
         jogador = 2;
       } else {
         gamePosition[coluna][linha] = jogador;
@@ -52,7 +52,7 @@ function appendChildPosition(evt) {
         ficha.classList.add("player2");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
-        playerStr.innerText = ('Player 1, é a sua vez...');
+        // playerStr.innerText = ('Player 1, é a sua vez...');
         jogador = 1;
       }
       i = 0;

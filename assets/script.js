@@ -83,6 +83,29 @@ botaoStart.addEventListener("click", hiddenInstrutions);
 /* ------------------------ MERO ------------------------ */
 
 /* ------------------------ MAURO ----------------------- */
+function vencedor(parametro){
+  if(parametro == 1){
+    const span = document.createElement("span");
+    span.classList.add("spanVitoria")
+    span.innerText = "King Kong Venceu"; 
+    const winner = document.getElementById("vencedor");
+    winner.appendChild(span);
+
+    const imagek = document.getElementById("IMG")
+    imagek.src ="../img/";
+
+  }else if(parametro == 2){
+    const span = document.createElement("span");
+    span.classList.add("spanVitoria")
+    span.innerText = "Godzilla Venceu";
+    const winner = document.getElementById("vencedor");
+    winner.appendChild(span);
+
+    const imageG = document.getElementById("IMG")
+    imageG.src ="../img/";
+  }
+}
+
 const jogador1 = 1;
 
 function checarVitoria(gamePosition) {

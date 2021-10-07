@@ -1,59 +1,65 @@
 /* ----------------------- CAUANA ----------------------- */
-const instrutions = document.querySelector('.instrutions');
-const game = document.querySelector('.game-hidden')
-const botaoStart = document.getElementById('play');
-let quemjoga = 'player1'
+const instrutions = document.querySelector(".instrutions");
+const game = document.querySelector(".game-hidden");
+const divPlayer = document.querySelector('.playerTurn')
+const botaoStart = document.getElementById("play");
+const playerStr = document.getElementById('playerStr')
+let jogador = 1;
 
 function hiddenInstrutions() {
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
+  playerStr.removeAttribute('hidden')
+  playerStr.innerText = ('Player 1, é a sua vez...')
+  divPlayer.classList.remove('playerTurn');
+  divPlayer.classList.add('nextPlayer');
   createGamePosition(0);
   createBoard();
+  selecionarColuna(); //Adicionar ao click para chamar a função
+  createNodesArray();
 }
 
 // Adicionando função para percorrer colunas
 function selecionarColuna() {
-const selectcoluna = document.querySelectorAll('.column')
+  const selectcoluna = document.querySelectorAll(".column");
 
-selectcoluna.forEach(column => {
-  column.addEventListener("click", jogar)
-})
+  selectcoluna.forEach((column) => {
+    column.addEventListener("click", appendChildPosition);
+  });
 }
 
-// Função jogar adicionando troca de players e criando as fichas
-function jogar(event) {
-  const play = document.querySelectorAll('.column')
+// Função de controle da situação do jogo
 
-  for (let i = 0; i < play.length; i++) {
-    if (quemjoga === 'player1') {
-      let ficha = document.createElement('div')
-        ficha.classList.add('player1')
-            play[i].appendChild(ficha)
+function appendChildPosition(evt) {
+  let divColumnInfo = evt.currentTarget;
+  let columnArrayDivs = evt.currentTarget.childNodes;
 
-            gamePosition.push() //Nao é assim, não sei percorrer a array
-            quemjoga = 'player2'
-
-          } else if (quemjoga === 'player2'){
-
-            let ficha = document.createElement('div')
-            ficha.classList.add('player2')
-            play[i].appendChild(ficha)
-
-            gamePosition.push() //Nao é assim, não sei percorrer a array
-            quemjoga = 'player1'
-          }
+  for (let i = columnArrayDivs.length - 1; i >= 0; i--) {
+    let checkDiv = columnArrayDivs[i].childElementCount;
+    if (checkDiv === 0) {
+      let linha = columnArrayDivs[i].dataset.row;
+      let coluna = divColumnInfo.dataset.column;
+      if (gamePosition[coluna][linha] === 0 && jogador === 1) {
+        gamePosition[coluna][linha] = jogador;
+        let ficha = document.createElement("div");
+        ficha.classList.add("player1");
+        columnArrayDivs[i].appendChild(ficha);
+        checarVitoria(gamePosition);
+        playerStr.innerText = ('Player 2, é a sua vez...');
+        jogador = 2;
+      } else {
+        gamePosition[coluna][linha] = jogador;
+        let ficha = document.createElement("div");
+        ficha.classList.add("player2");
+        columnArrayDivs[i].appendChild(ficha);
+        checarVitoria(gamePosition);
+        playerStr.innerText = ('Player 1, é a sua vez...');
+        jogador = 1;
+      }
+      i = 0;
+    }
   }
 }
-
-// // Função para mudar o jogador a cada clique (tentar inserir dentro da função jogar()??????)
-// function mudarJogador() {
-//   if( quemjoga === 'player1') {
-//     quemjoga = 'player2'
-//   } else if ( quemjoga === 'player2') {
-//     quemjoga = 'player1'
-//   }
-//   return quemjoga
-// }
 
 /* ----------------------- CAUANA ----------------------- */
 
@@ -91,8 +97,9 @@ function vencedor(parametro){
     const winner = document.getElementById("vencedor");
     winner.appendChild(span);
 
-    const imagek = document.getElementById("IMG")
-    imagek.src ="../img/";
+    const imageK = document.createElement("img")
+    imageK.src ="../img/kong.png";
+    document.getElementById("IMG").appendChild(imageK)
 
   }else if(parametro == 2){
     const span = document.createElement("span");
@@ -101,8 +108,10 @@ function vencedor(parametro){
     const winner = document.getElementById("vencedor");
     winner.appendChild(span);
 
-    const imageG = document.getElementById("IMG")
-    imageG.src ="../img/";
+    const imageG = document.createElement("img")
+    imageG.src ="../img/godzilla.png";
+    document.getElementById("IMG").appendChild(imageG)
+
   }
 }
 
@@ -122,7 +131,10 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y][x + 2] &&
           cell === gamePosition[y][x + 3]
         ) {
-          return `Jogador ${gamePosition[y][x]} venceu `;
+          // return `Jogador ${gamePosition[y][x]} venceu `;
+          console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          realcaCelulas([y], [x], [y], [x + 1], [y], [x + 2], [y], [x + 3]);
+          return vencedor(cell)
         }
       }
     }
@@ -137,7 +149,10 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y + 2][x] &&
           cell === gamePosition[y + 3][x]
         ) {
-          return `Jogador ${gamePosition[y][x]} venceu `;
+          // return `Jogador ${gamePosition[y][x]} venceu `;
+          console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          realcaCelulas([y], [x], [y + 1], [x], [y + 2], [x], [y + 3], [x]);
+          return vencedor(cell)
         }
       }
     }
@@ -152,7 +167,10 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y + 2][x + 2] &&
           cell === gamePosition[y + 3][x + 3]
         ) {
-          return `Jogador ${gamePosition[y][x]} venceu `;
+          // return `Jogador ${gamePosition[y][x]} venceu `;
+          console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          realcaCelulas([y], [x], [y + 1], [x + 1], [y + 2], [x + 2], [y + 3], [x + 3]);
+          return vencedor(cell)
         }
       }
     }
@@ -167,7 +185,10 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y - 2][x + 2] &&
           cell === gamePosition[y - 3][x + 3]
         ) {
-          return `Jogador ${gamePosition[y][x]} venceu `;
+          // return `Jogador ${gamePosition[y][x]} venceu `;
+          console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          realcaCelulas([y], [x], [y - 1], [x + 1], [y - 2], [x + 2], [y - 3], [x + 3]);
+          return vencedor(cell)
         }
       }
     }
@@ -183,10 +204,7 @@ function checarVitoria(gamePosition) {
 //o botão reiniciar
 
 /* ----------------------- VAGNER ----------------------- */
-function captureData(elementColumn, elementLine, player) {
-  gamePosition[elementColumn][elementLine] = player;
-}
-
+// CRIA O ARRAY COM VALORES ZERADOS
 let gamePosition = [];
 function createGamePosition(n) {
   gamePosition = [];
@@ -198,4 +216,22 @@ function createGamePosition(n) {
     gamePosition.push(newColum);
   }
 }
-/* ----------------------- VAGNER ----------------------- */
+
+//CRIA UM ARRAY DOS NODES PARA REALÇAR AS CÉLULAS QUE DEU CONDIÇÃO DE VITÓRIA
+let nodesArray = [];
+function createNodesArray() {
+  const colunasArray = document.getElementsByTagName("main")[0].childNodes;
+
+  colunasArray.forEach((coluna) => {
+    nodesArray.push(coluna.childNodes);
+  });
+}
+
+//MARCA AS CÉLULAS QUE DERAM A VITÓRIA
+function realcaCelulas(x0, y0, x1, y1, x2, y2, x3, y3) {
+  nodesArray[x0][y0].style.backgroundColor = "green";
+  nodesArray[x1][y1].style.backgroundColor = "green";
+  nodesArray[x2][y2].style.backgroundColor = "green";
+  nodesArray[x3][y3].style.backgroundColor = "green";
+}
+// /* ----------------------- VAGNER ----------------------- */

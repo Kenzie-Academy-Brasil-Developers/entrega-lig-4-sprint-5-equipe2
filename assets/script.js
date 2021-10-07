@@ -33,15 +33,19 @@ function appendChildPosition(evt) {
   for (let i = columnArrayDivs.length - 1; i >= 0; i--) {
     let checkDiv = columnArrayDivs[i].childElementCount;
     if (checkDiv === 0) {
+
       let linha = columnArrayDivs[i].dataset.row;
       let coluna = divColumnInfo.dataset.column;
       if (gamePosition[coluna][linha] === 0 && jogador === 1) {
+
         gamePosition[coluna][linha] = jogador;
         let ficha = document.createElement("div");
         ficha.classList.add("player1");
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
         jogador = 2;
+        divplayer.innerHTML = 'Godzilla, agora é sua vez.'
+
       } else {
         gamePosition[coluna][linha] = jogador;
         let ficha = document.createElement("div");
@@ -49,6 +53,7 @@ function appendChildPosition(evt) {
         columnArrayDivs[i].appendChild(ficha);
         checarVitoria(gamePosition);
         jogador = 1;
+        divplayer.innerHTML = 'King-Kong, agora é sua vez.'
       }
       i = 0;
     }

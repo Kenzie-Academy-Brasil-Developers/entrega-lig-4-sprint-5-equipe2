@@ -1,0 +1,429 @@
+/* ----------------------- CAUANA ----------------------- */
+
+@font-face {
+  font-family:'Bad Grunge';
+  src: url('BADGRUNGE.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-image: url(../img/wallpaper1.jpg);
+  background-position: top;
+}
+h2 {
+  font-family: 'Bad Grunge','Bungee', cursive;
+  font-size: 55px;
+  color: #f7f6df;
+  text-shadow: 2px 8px 1px #b11602;
+  text-align: center;
+  margin: 10px;
+  line-height: 50px;
+}
+
+.instrutions {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.title-instrutions {
+  font-family: 'Bad Grunge','Bungee', cursive;
+  font-size: 40px;
+  color: #f7f6df;
+  text-shadow: 1px 2px 1px #195852;
+}
+
+.hidden {
+  display: none;
+}
+
+.game-hidden {
+  display: none;
+}
+
+.show-game {
+  display: flex;
+}
+
+.instrutions p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+  
+}
+
+#div-play {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+ol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  color: white;
+  margin: 10px;
+  font-family: 'Krub', sans-serif;
+}
+
+ol li {
+  font-size: 14px;
+  /* text-shadow: 2px 2px 1px black; */
+  margin: 6px 5px 6px 5px;
+  display:flex;
+  text-align: center;
+}
+
+.player1 {
+  background-image: url("../img/kong.png");
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  animation-name: queda;
+  animation-duration: 2s;
+}
+
+.player2 {
+  background-image: url("../img/godzilla.png"); /* Adicionar background positon center */
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  animation-name: queda;
+  animation-duration: 2s;
+}
+
+button {
+  background-color: #012945;
+  font-family: 'Bad Grunge','Bungee', cursive;
+  font-size: 30px;
+  color: white;
+}
+
+button:hover {
+  background-color: white;
+  color: #012945;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+#play {
+  animation: tremer .1s;
+  animation-iteration-count: infinite;
+}
+@keyframes queda {
+  0%{transform: translateY(-600%);}
+  25%{transform: translateY(20%);}
+  50%{transform: translateY(0%);}
+  100%{transform: translateY(0%);}
+}
+
+@keyframes tremer {
+  25% {margin-left: 3px;}
+  50% {margin-left: 0;}
+  75% {margin-left: -3px;}
+  100% {margin-left: 0;}
+}
+
+.divgod1 {
+  opacity: 20%
+}
+
+.divkong1 {
+  opacity: 20%
+}
+
+.divseta1 {
+  transform: rotate(900deg) scaleY(-1);
+  transition: 1s;
+
+}
+
+.divseta2 {
+  transform: rotate(1800deg);
+  transition: 1s;
+
+}
+
+.botaoreset {
+  position: relative;
+  top: 490px;
+}
+/* ----------------------- CAUANA ----------------------- */
+
+/* ------------------------ MERO ------------------------ */
+
+main {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #b11602;
+  opacity: 80%; */
+  
+  /* width: 8vw; */
+  /* height: 70vh; */
+}
+
+.cell {
+  border: solid 1.5px white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  opacity: 85%;
+  justify-content: center; /* alinhar a bolinha */
+  align-items: center; /* alinhar a bolinha */
+  /* flex-grow: 1; */
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+}
+
+#divPlayer {
+  display:flex;
+  justify-content: center;
+  color: white;
+
+}
+
+#divPlayer img {
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+}
+
+.nextPlayer {
+  font-family: 'Bungee', cursive;
+  font-size: 22px;
+  color: #f7f6df;
+  text-shadow: 1px 2px 1px #195852;
+}
+#divgod, #divkong {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+  text-transform: uppercase;
+  font-family: 'Anton','Bad Grunge', 'Krub', sans-serif;
+  font-size: 20px;
+  flex-wrap: nowrap;
+}
+
+#divgod img, #divkong img{
+  padding: 10px;
+}
+
+#divseta {
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/arrow.png");
+    background-size: contain; 
+    background-repeat: no-repeat;
+}
+
+#divseta img {
+  background-color: white;
+  margin:5px;
+  display:flex;
+}
+
+.nextPlayer {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+} 
+/* ------------------------ MERO ------------------------ */
+
+/* ------------------------ MAURO ----------------------- */
+
+.ganhadorkong {
+  width: 80px;
+  height: 80px;
+  background-image: url("../img/kong.png");
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display:flex;
+  align-items: flex-start;
+  position: relative;
+  right: 95px;
+}
+.ganhadorgod {
+  width: 80px;
+  height: 80px;
+  background-image: url("../img/godzilla.png");
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display:flex;
+  align-items: flex-start;
+  position: relative;
+  right: 95px;
+}
+
+.spanVitoria {
+  color: white;
+  text-shadow: 2px 2px 1px #b11602;
+  font-size: 40px;
+  font-family: 'Bad Grunge','Anton', sans-serif;
+  text-transform: uppercase;
+  line-height: 25px;
+  min-width: 190px;
+  display:flex;
+  align-items: center;
+  position: relative;
+  left: 90px;
+  top: 10px;
+}
+
+#abaVencedores{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#vencedor {
+  display:flex;
+
+}
+
+/*EMPATE*/
+
+.ganhadorgod1 {
+  width: 50px;
+  height: 50px;
+  background-image: url("../img/godzilla.png");
+  background-size: contain;
+  position: relative;
+  right: 90px;
+}
+
+.ganhadorkong1 {
+  width: 50px;
+  height: 50px;
+  background-image: url("../img/kong.png");
+  background-size: contain;
+  position: relative;
+  left: 90px;
+}
+
+
+.spanEmpate {
+  color: white;
+  text-shadow: 2px 2px 1px #b11602;
+  font-size: 30px;
+  font-family: 'Bad Grunge','Anton', sans-serif;
+  text-transform: uppercase;
+  line-height: 25px;
+  min-width: 190px;
+  display:flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  left: 45px;
+}
+
+
+/* ------------------------ MAURO ----------------------- */
+
+/* ----------------------- VAGNER ----------------------- */
+
+/* ----------------------- VAGNER ----------------------- */
+
+@media (min-width: 720px) {
+  h2 {
+    font-size: 100px;
+    margin-bottom: 20px;
+  }
+
+  .cell {
+    width: 52px;
+    height: 52px;
+  }
+
+  .player1 {
+    width: 47px;
+    height: 47px;
+  }
+
+  .player2 {
+    width: 47px;
+    height: 47px;
+  }
+
+  #divPlayer img {
+    width: 60px;
+    height: 60px;
+  }
+  #divgod, #divkong {
+    margin: 5px;
+    font-size: 25px;
+  }
+  
+  #divgod img, #divkong img{
+    padding: 10px;
+  }
+  
+  #divseta {
+      width: 40px;
+      height: 40px;
+  }
+  
+  .divseta img {
+    margin:5px;
+  }
+
+  .spanVitoria {
+    font-size: 50px;
+    line-height: 30px;
+    min-width: 250px;
+  }
+
+  .ganhadorgod, .ganhadorkong {
+    right: 123px;
+  }
+
+  .ganhadorgod1 {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    right: 120px;
+  }
+  
+  .ganhadorkong1 {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: 120px;
+  }
+  
+  
+  .spanEmpate {
+    font-size: 40px;
+    line-height: 30px;
+    min-width: 250px;
+    left: 65px;
+  }  
+
+  .botaoreset {
+    position: relative;
+    top: 590px;
+  }
+
+
+}

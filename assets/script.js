@@ -1,4 +1,3 @@
-/* ----------------------- CAUANA ----------------------- */
 const instrutions = document.querySelector(".instrutions");
 const game = document.querySelector(".game-hidden");
 const divPlayer = document.querySelector('.playerTurn')
@@ -12,7 +11,7 @@ let jogador = 1;
 let totalFichas = 1;
 
 function hiddenInstrutions() {
-  // resetGame()
+  //RESETA O JOGO
   const body = document.getElementsByTagName("body")[0];
   const main = document.getElementsByTagName("main")[0];
   if (body.contains(main)) {
@@ -24,19 +23,20 @@ function hiddenInstrutions() {
       winner2.classList = ""; 
     }
   }
+
+  //ESCONDE MENU INICIAL, CRIA TABELA E INICIA O JOGO
   instrutions.classList.remove("instrutions");
   instrutions.classList.add("hidden");
   playerStr.removeAttribute('hidden')
-  // playerStr.innerText = ('Player 1, é a sua vez...')
   divPlayer.classList.remove('playerTurn');
   divPlayer.classList.add('nextPlayer');
   createGamePosition(0);
   createBoard();
-  selecionarColuna(); //Adicionar ao click para chamar a função
+  selecionarColuna();
   createNodesArray();
 }
 
-// Adicionando função para percorrer colunas
+/* ---------- ADICIONA EVENTLISTENER AS COLUNAS --------- */
 function selecionarColuna() {
   const selectcoluna = document.querySelectorAll(".column");
 
@@ -45,8 +45,7 @@ function selecionarColuna() {
   });
 }
 
-// Função de controle da situação do jogo
-
+/* --------------- CONTROLA STATUS DO JOGO -------------- */
 function appendChildPosition(evt) {
   let divColumnInfo = evt.currentTarget;
   let columnArrayDivs = evt.currentTarget.childNodes;
@@ -91,10 +90,7 @@ function appendChildPosition(evt) {
   }
 }
 
-/* ----------------------- CAUANA ----------------------- */
-
-/* ------------------------ MERO ------------------------ */
-
+/* -------------- CRIA O TABULEIRO DO JOGO -------------- */
 function createBoard() {
   const body = document.getElementsByTagName("body");
   const main = document.createElement("main");
@@ -116,10 +112,8 @@ function createBoard() {
 }
 
 botaoStart.addEventListener("click", hiddenInstrutions);
-/* ------------------------ MERO ------------------------ */
 
-/* ------------------------ MAURO ----------------------- */
-
+//MOSTRA O VENCEDOR E CHAMA O BOTÃO DE REINICIAR O JOGO
 function vencedor(parametro){
   if(parametro == 1){
     const span = document.createElement("span");
@@ -141,13 +135,12 @@ function vencedor(parametro){
   }
 }
 
-const jogador1 = 1;
-
+//VERIFICA CONDICAO DE VITORIA
 function checarVitoria(gamePosition) {
   const edgeX = gamePosition[0].length - 3;
   const edgeY = gamePosition.length - 3;
 
-  //horizontal
+  //VERTICAL
   for (let y = 0; y < gamePosition.length; y++) {
     for (let x = 0; x < edgeX; x++) {
       let cell = gamePosition[y][x];
@@ -164,7 +157,7 @@ function checarVitoria(gamePosition) {
       }
     }
   }
-  //vertical
+  //HORIZONTAL
   for (let y = 0; y < edgeY; y++) {
     for (let x = 0; x < gamePosition[0].length; x++) {
       cell = gamePosition[y][x];
@@ -174,17 +167,14 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y + 2][x] &&
           cell === gamePosition[y + 3][x]
         ) {
-          // return `Jogador ${gamePosition[y][x]} venceu `;
-          // console.log(`Jogador ${gamePosition[y][x]} venceu `);
-          // winner.classList.add('ganhadorkgod')
           realcaCelulas([y], [x], [y + 1], [x], [y + 2], [x], [y + 3], [x]);
           descelecionarColunas();
-          return vencedor(cell)
+          return vencedor(cell);
         }
       }
     }
   }
-  //diagonal 753
+  //DIAGONAL 159
   for (let y = 0; y < edgeY; y++) {
     for (let x = 0; x < edgeX; x++) {
       cell = gamePosition[y][x];
@@ -196,12 +186,12 @@ function checarVitoria(gamePosition) {
         ) {
           realcaCelulas([y], [x], [y + 1], [x + 1], [y + 2], [x + 2], [y + 3], [x + 3]);
           descelecionarColunas();
-          return vencedor(cell)
+          return vencedor(cell);
         }
       }
     }
   }
-  //diagonal 159
+  //DIAGONAL 753
   for (let y = 3; y < gamePosition.length; y++) {
     for (let x = 0; x < edgeX; x++) {
       cell = gamePosition[y][x];
@@ -213,16 +203,14 @@ function checarVitoria(gamePosition) {
         ) {
           realcaCelulas([y], [x], [y - 1], [x + 1], [y - 2], [x + 2], [y - 3], [x + 3]);
           descelecionarColunas();
-          return vencedor(cell)
+          return vencedor(cell);
         }
       }
     }
   }
 }
-/* ------------------------ MAURO ----------------------- */
 
-/* ----------------------- VAGNER ----------------------- */
-// CRIA O ARRAY COM VALORES ZERADOS
+/* ---------- CRIA O ARRAY DAS JOGADAS COM VALORES ZERADOS ---------- */
 let gamePosition = [];
 function createGamePosition(n) {
   gamePosition = [];
@@ -235,7 +223,7 @@ function createGamePosition(n) {
   }
 }
 
-//CRIA UM ARRAY DOS NODES PARA REALÇAR AS CÉLULAS QUE DEU CONDIÇÃO DE VITÓRIA
+/* --CRIA UM ARRAY DOS NODES PARA REALÇAR AS CÉLULAS QUE DEU CONDIÇÃO DE VITÓRIA-- */
 let nodesArray = [];
 function createNodesArray() {
   const colunasArray = document.getElementsByTagName("main")[0].childNodes;
@@ -245,8 +233,9 @@ function createNodesArray() {
   });
 }
 
-//MARCA AS CÉLULAS QUE DERAM A VITÓRIA
+/* -------- MARCA AS CÉLULAS QUE DERAM A VITÓRIA -------- */
 function realcaCelulas(x0, y0, x1, y1, x2, y2, x3, y3) {
+  
   nodesArray[x0][y0].style.backgroundColor = "green";
   nodesArray[x0][y0].style.border = "3px solid green";
   
@@ -277,6 +266,7 @@ function contarFichas(fixas) {
   totalFichas++;
 }
 
+/* ------ DESMARCA AS COLUNAS PARA REINICIAR O JOGO ----- */
 function descelecionarColunas() {
   const selectcoluna = document.querySelectorAll(".column");
   selectcoluna.forEach((column) => {
@@ -284,17 +274,17 @@ function descelecionarColunas() {
   });
 }
 
+/* -------- ZERA OS VALORES PARA REINICIAR O JOGO ------- */
 function resetGame(){
   totalFichas = 0;
   jogador = 1;
   nodesArray = [];
-  botaoStart.innerText = "Jogar Novamente"
+  botaoStart.innerText = "Jogar Novamente";
   const body = document.getElementsByTagName("body")[0];
   const main = document.getElementsByTagName("main")[0];
-  botaoStart.classList.add('botaoreset')
+  botaoStart.classList.add('botaoreset');
   if (body.contains(main)) {
     main.appendChild(botaoStart);
     botaoStart.style.position = "absolute";
   }
 }
-// /* ----------------------- VAGNER ----------------------- */

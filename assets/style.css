@@ -13,11 +13,11 @@ body {
 }
 h2 {
   font-family: 'Bad Grunge','Bungee', cursive;
-  font-size: 60px;
+  font-size: 55px;
   color: #f7f6df;
   text-shadow: 2px 8px 1px #b11602;
   text-align: center;
-  margin: 20px;
+  margin: 10px;
   line-height: 50px;
 }
 
@@ -153,6 +153,10 @@ button:hover {
 
 }
 
+.botaoreset {
+  position: relative;
+  top: 490px;
+}
 /* ----------------------- CAUANA ----------------------- */
 
 /* ------------------------ MERO ------------------------ */
@@ -344,12 +348,12 @@ main {
 @media (min-width: 720px) {
   h2 {
     font-size: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .cell {
-    width: 55px;
-    height: 55px;
+    width: 52px;
+    height: 52px;
   }
 
   .player1 {
@@ -415,5 +419,11 @@ main {
     min-width: 250px;
     left: 65px;
   }  
+
+  .botaoreset {
+    position: relative;
+    top: 590px;
+  }
+
 
 }

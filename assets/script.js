@@ -292,6 +292,7 @@ function resetGame(){
   botaoStart.innerText = "Jogar Novamente"
   const body = document.getElementsByTagName("body")[0];
   const main = document.getElementsByTagName("main")[0];
+  botaoStart.classList.add('botaoreset')
   if (body.contains(main)) {
     main.appendChild(botaoStart);
     botaoStart.style.position = "absolute";

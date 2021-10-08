@@ -175,9 +175,8 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y + 3][x]
         ) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
-          console.log(`Jogador ${gamePosition[y][x]} venceu `);
-          winner.classList.add('ganhadorgod')
-          winner.innerText = 'god ganhou'
+          // console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          // winner.classList.add('ganhadorkgod')
           realcaCelulas([y], [x], [y + 1], [x], [y + 2], [x], [y + 3], [x]);
           descelecionarColunas();
           return vencedor(cell)

@@ -175,9 +175,8 @@ function checarVitoria(gamePosition) {
           cell === gamePosition[y + 3][x]
         ) {
           // return `Jogador ${gamePosition[y][x]} venceu `;
-          console.log(`Jogador ${gamePosition[y][x]} venceu `);
-          winner.classList.add('ganhadorgod')
-          winner.innerText = 'god ganhou'
+          // console.log(`Jogador ${gamePosition[y][x]} venceu `);
+          // winner.classList.add('ganhadorkgod')
           realcaCelulas([y], [x], [y + 1], [x], [y + 2], [x], [y + 3], [x]);
           descelecionarColunas();
           return vencedor(cell)
@@ -292,6 +291,7 @@ function resetGame(){
   botaoStart.innerText = "Jogar Novamente"
   const body = document.getElementsByTagName("body")[0];
   const main = document.getElementsByTagName("main")[0];
+  botaoStart.classList.add('botaoreset')
   if (body.contains(main)) {
     main.appendChild(botaoStart);
     botaoStart.style.position = "absolute";
